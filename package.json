@@ -9,5 +9,8 @@
     "babel-loader": "^7.1.2",
     "eslint": "^4.7.1",
     "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "opentype.js": "^0.7.3"
   }
 }

@@ -19,7 +19,7 @@ function laser_on(intensity, feedrate, cmds) {
 }
 
 function square(x, y, dx, dy, stepy, intensity, feedrate) {
-    var cmds = [`square feedrate=${feedrate}, power=${intensity} )`, G0(x, y)];
+    var cmds = [`( square feedrate=${feedrate}, power=${intensity} )`, G0(x, y)];
     var steps = (dy / stepy);
     for (var i = 0; i <= steps; i++) {
         var cury = y + (i * stepy);

@@ -117,12 +117,12 @@ function swatch(options) {
         feedrate_max: 2000,
 
         size_x: 10,
-        space_x: 2,
+        space_x: 1,
 
         size_y: 10,
-        space_y: 2,
+        space_y: 1,
 
-        stepover: 0.5,
+        stepover: 1,
 
         font_settings: {
             fontSize: 6,

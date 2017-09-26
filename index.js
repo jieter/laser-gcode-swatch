@@ -19,7 +19,7 @@ function laser_on(intensity, feedrate, cmds) {
 }
 
 function square(x, y, dx, dy, stepy, intensity, feedrate) {
-    var cmds = [`( square feedrate=${feedrate}, power=${intensity} )`, G0(x, y)];
+    var cmds = [`(square feedrate=${feedrate}, power=${intensity})`, G0(x, y)];
     var steps = (dy / stepy);
     for (var i = 0; i <= steps; i++) {
         var cury = y + (i * stepy);
@@ -66,7 +66,7 @@ function text(x, y, text, options) {
         ]
     }
 
-    var ret = [`( text "${text}" at [${x}, ${y}])\n`];
+    var ret = [`(text "${text}" at [${x}, ${y}])\n`];
     var first;
     font.getPath(text, x, y, options.fontSize).commands.forEach(function (command) {
         var p = R(command);

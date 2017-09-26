@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "bundle": "webpack",
+    "watch": "webpack --watch",
+    "lint": "eslint index.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "eslint": "^4.7.1",
+    "webpack": "^3.6.0"
+  }
+}

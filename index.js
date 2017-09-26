@@ -172,5 +172,7 @@ if (typeof window !== 'undefined') {
         document.querySelector('code').innerHTML = swatch();
     });
 } else {
-    console.log(swatch());
+    setTimeout(function () {
+        console.log(swatch());
+    }, 100);
 }

@@ -2,6 +2,7 @@
   "scripts": {
     "bundle": "webpack",
     "watch": "webpack --watch",
+    "serve": "npm run watch & serve .",
     "lint": "eslint index.js"
   },
   "devDependencies": {

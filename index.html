@@ -4,10 +4,20 @@
     <meta charset="utf-8">
     <title>Laser gcode swatch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="float: right">
+                    <a href="https://github.com/jieter/laser-gcode-swatch/">Github</a>
+                </div>
+                <h2>Laser swatch gcode generator</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-3 bg-light sidebar">
                 <h3>Settings</h3>
@@ -76,7 +86,20 @@
             </div>
 
             <div class="col-md-9">
-                <pre><code class="gcode"></code></pre>
+                <ul class="nav nav-tabs" role="tablist">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#visual" role="tab">Visualisation</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#gcode" role="tab">GCode</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="visual" role="tabpanel">...</div>
+                    <div class="tab-pane active" id="gcode" role="tabpanel">
+                        <pre><code class="gcode"></code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

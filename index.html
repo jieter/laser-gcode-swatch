@@ -24,7 +24,7 @@
                 <form>
                 <div class="form-group">
                     <strong>Power</strong>
-                    <small>(PWM is usually 0-255 or 0-1200)</small>
+                    <small>(min/step/max, PWM is usually 0-255 or 0-1200)</small>
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" class="form-control" min="0" name="intensity_min" />
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <strong>Feedrate <code>[mm/min]</code></strong>
+                    <strong>Feedrate <code>[mm/min]</code></strong><small>min/step/max</small>
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" class="form-control" min="0" name="feedrate_min" />
@@ -56,7 +56,7 @@
                     <strong>Rectangle size <code>[mm]</code></strong>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" min="0" name="size_y" />
+                            <input type="text" class="form-control" min="0" name="size_x" />
                         </div>
                         <div class="col-md-4">x</div>
                         <div class="col-md-4">
@@ -68,7 +68,7 @@
                     <strong>Rectangle spacing <code>[mm]</code></strong>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" min="0" name="space_y" />
+                            <input type="text" class="form-control" min="0" name="space_x" />
                         </div>
                         <div class="col-md-4">x</div>
                         <div class="col-md-4">

@@ -3,12 +3,14 @@
     "bundle": "webpack",
     "watch": "webpack --watch",
     "serve": "npm run watch & serve .",
-    "lint": "eslint index.js"
+    "lint": "eslint index.js browser.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.7.1",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.6.0"
   },
   "dependencies": {

@@ -39,6 +39,29 @@ function square(x, y, dx, dy, stepy, intensity, feedrate) {
     return laser_on(intensity, feedrate, cmds);
 }
 
+function distance(a, b) {
+    return Math.sqrt(
+        Math.pow(b[0] - a[0], 2) +
+        Math.pow(b[1] - a[1], 2)
+    );
+}
+
+function interpolate_quadratic_bezier(q0, q1, q2) {
+    var smoothness = 5;
+    var segments = (distance(q0, q1) + distance(q1, q1)) / smoothness;
+
+    var ret = [];
+    for (var i = 0; i < segments; i++) {
+        var t = i * (1 / segments);
+        var tinv = 1 - t;
+        ret.push([
+            tinv * tinv * q0[0] + 2 * t * tinv * q1[0] + t * t * q2[0],
+            tinv * tinv * q0[1] + 2 * t * tinv * q1[1] + t * t * q2[1],
+        ]);
+    }
+    return ret;
+}
+
 function text(x, y, s, options) {
     // force string
     s = '' + s;
@@ -63,7 +86,7 @@ function text(x, y, s, options) {
     };
 
     var ret = [`(text "${s}" at [${x}, ${y}])\n`];
-    var first;
+    var first, prev = [x, y];
     options.font.getPath(s, x, y, options.fontSize).commands.forEach(function (command) {
         var p = R(command);
         if (command['type'] != 'Z' && (isNaN(p[0]) || isNaN(p[1]))) {
@@ -86,27 +109,32 @@ function text(x, y, s, options) {
             first = undefined;
             break;
         case 'C':
-
+            // bezier curve from current postion to given coordinate
+            // with two control points
+            // TODO.
             break;
         case 'Q':
             // Quadratic bezier curve from current position to given coordinate
-            // with control point x1, y1
-            // var cp = R([command.x1, command.y1]);
-            // TODO: make this actually do a q-bezier curve instead of just a line.
-            ret.push(G1(p[0], -p[1]));
-
+            // with one control point
+            var cp = R([command.x1, command.y1]);
+            interpolate_quadratic_bezier(prev, cp, p).forEach(function (xy) {
+                ret.push(G1(xy[0], -xy[1]));
+            });
             break;
         default:
             console.error(command);
         }
+        prev = p;
     });
     return laser_on(options.intensity, options.feedrate, ret) + '\nM5 S0';
 }
 var today = new Date();
 
 var default_options = {
+    // stop spindle, absolute positioning, metric coordinates
     preamble: `M05 S0 G90 G21`,
-    postamble: 'M18',
+    // program end
+    postamble: 'M02',
     intensity_min: 400,
     intensity_step: 100,
     intensity_max: 1200,

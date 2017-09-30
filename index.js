@@ -132,9 +132,9 @@ var today = new Date();
 
 var default_options = {
     // stop spindle, absolute positioning, metric coordinates
-    preamble: `M05 S0 G90 G21`,
+    preamble: `M5 S0 G90 G21`,
     // program end
-    postamble: 'M02',
+    postamble: 'M2',
     intensity_min: 400,
     intensity_step: 100,
     intensity_max: 1200,

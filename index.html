@@ -4,8 +4,14 @@
     <meta charset="utf-8">
     <title>Laser gcode swatch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+
+    <script src="bundle.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <style>
+    #visualizer {
+        height: 600px;
+    }
+    </style>
 </head>
 
 <body>
@@ -19,7 +25,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 bg-light sidebar">
+            <div class="col-md-4 bg-light sidebar">
                 <h3>Settings</h3>
                 <form>
                 <div class="form-group">
@@ -85,18 +91,18 @@
                 <button class="btn btn-ok gcode-download">download</button>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <ul class="nav nav-tabs" role="tablist">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#visual" role="tab">Visualisation</a>
-                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#gcode" role="tab">GCode</a>
+                        <a class="nav-link active" data-toggle="tab" href="#visualizer" role="tab">Visualisation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#gcode" role="tab">GCode</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="visual" role="tabpanel">...</div>
-                    <div class="tab-pane active" id="gcode" role="tabpanel">
+                    <div class="tab-pane active" id="visualizer" role="tabpanel"></div>
+                    <div class="tab-pane" id="gcode" role="tabpanel">
                         <pre><code class="gcode"></code></pre>
                     </div>
                 </div>
@@ -104,6 +110,4 @@
         </div>
     </div>
 </body>
-
-<script src="bundle.js"></script>
 </html>

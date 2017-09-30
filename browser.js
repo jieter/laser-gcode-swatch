@@ -1,14 +1,14 @@
 import * as gcode from './index.js';
+import * as opentype from 'opentype.js';
+import * as $ from 'jquery';
 
-var opentype = require('opentype.js');
+import createObjectFromGCode from './lib/gcode-model.js';
+import createScene from './lib/renderer.js';
+
+// make bootstrap stop emitting errors about tether.
+window.Tether = {};
+
 var options = Object.assign({}, gcode.options);
-
-opentype.load(gcode.options.fontName, function (err, font) {
-    if (err) {
-        console.error(err);
-    }
-    options['font_settings']['font'] = font;
-});
 
 function download(filename, text) {
     var element = document.createElement('a');
@@ -23,21 +23,57 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
+var scene, object;
+function visualize(code) {
+    if (object) {
+        scene.remove(object);
+    }
+    object = createObjectFromGCode(code);
+    scene.add(object);
+    console.log(object);
+}
 
-document.querySelectorAll('input').forEach(function (input) {
-    input.value = gcode.options[input.name];
-    input.addEventListener('change', function (e) {
-        // update options, convert to number.
-        options[input.name] = +e.target.value;
-        console.log('updated', input.name, 'options', options);
+$(function () {
+    scene = createScene($('#visualizer'));
+
+    function update() {
+        var code = gcode.swatch(options);
+        visualize(code);
+        document.querySelector('.gcode').innerHTML = code;
+    }
+    opentype.load(gcode.options.fontName, function (err, font) {
+        if (err) {
+            console.error(err);
+        }
+        options['font_settings']['font'] = font;
+
+        update();
     });
 
-});
-document.querySelector('button.gcode-generate').addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector('.gcode').innerHTML = gcode.swatch(options);
-});
-document.querySelector('button.gcode-download').addEventListener('click', function (e) {
-    e.preventDefault();
-    download('swatch.gcode', gcode.swatch(options));
+    $('input').each(function () {
+        var input = $(this);
+        var name = input.attr('name');
+        input.val(gcode.options[name]);
+
+        input.on('change', function (e) {
+            // update options, convert to number.
+            options[name] = +e.target.value;
+            console.log(`updated ${name}=${options[name]}\n options: `, options);
+            visualize(gcode.swatch(options));
+        });
+    });
+
+
+
+    $('button.gcode-generate').on('click', function (e) {
+        e.preventDefault();
+        update();
+    });
+
+    $('button.gcode-download').on('click', function (e) {
+        e.preventDefault();
+        download('swatch.gcode', gcode.swatch(options));
+    });
+
+
 });

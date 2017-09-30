@@ -11,3 +11,4 @@ Generates a series of paths at different feedrates / laser power, to check the e
  - Bezier curves, approximation by biarcs
      - https://pomax.github.io/bezierinfo/#arcapproximation
      - http://fontforge.github.io/bezier.html
+ - gcode parser/viewer https://github.com/joewalnes/gcode-viewer

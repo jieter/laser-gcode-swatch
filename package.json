@@ -10,10 +10,13 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "eslint": "^4.7.1",
+    "expose-loader": "^0.7.3",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.6.0"
   },
   "dependencies": {
-    "opentype.js": "^0.7.3"
+    "jquery": "^3.2.1",
+    "opentype.js": "^0.7.3",
+    "three": "^0.87.1"
   }
 }

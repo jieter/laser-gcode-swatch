@@ -55,7 +55,7 @@ $(function () {
         var name = input.attr('name');
         input.val(gcode.options[name]);
 
-        input.on('change', function (e) {
+        input.on('input', function (e) {
             // update options, convert to number.
             options[name] = +e.target.value;
             console.log(`updated ${name}=${options[name]}\n options: `, options);

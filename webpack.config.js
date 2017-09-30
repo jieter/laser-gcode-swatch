@@ -6,11 +6,15 @@ module.exports = {
     entry: './browser.js',
     output: {
         path: __dirname,
-        filename: "bundle.js"
+        filename: 'bundle.js'
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015'] } },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: { presets: ['es2015'] }
+            },
         ],
         rules: [{
             test: require.resolve('jquery'),
@@ -23,6 +27,12 @@ module.exports = {
     plugins: [
         // new webpack.optimize.DedupePlugin(),
         // new webpack.optimize.OccurenceOrderPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+        new UglifyJSPlugin({
+            mangle: false,
+            sourcemap: false,
+            compressor: {
+                warnings: false
+            }
+        }),
     ],
 };

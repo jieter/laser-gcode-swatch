@@ -150,7 +150,7 @@ var default_options = {
 
     stepover: 0.5,
 
-    fontName: 'Y14.5M-2009.ttf',
+    fontName: 'fonts/Y14.5M-2009.ttf',
     font_settings: {
         fontSize: 6,
         intensity: 1000,

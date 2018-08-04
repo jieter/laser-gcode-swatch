@@ -99,7 +99,7 @@ function text(x, y, s, options) {
         case 'M':
             ret.push(laser_off());
             ret.push(G0(p[0], -p[1]));
-            ret.push('M3 S' + options.intensity);
+            ret.push('M4 S' + options.intensity);
             break;
         case 'L':
             ret.push(G1(p[0], -p[1]));

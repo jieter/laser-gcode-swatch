@@ -26,9 +26,8 @@ module.exports = {
     },
     plugins: [
         new UglifyJSPlugin({
-            mangle: false,
-            sourcemap: false,
-            compressor: {
+            sourceMap: true,
+            warningsFilter: {
                 warnings: false
             }
         }),
